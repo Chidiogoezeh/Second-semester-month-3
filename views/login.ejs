@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Login - TODO</title>
+</head>
+<body>
+    <div class="auth-container">
+        <div id="login-form">
+            <h2>Login</h2>
+            <% if (locals.error) { %> <p class="error" style="color: red;"><%= error %></p> <% } %>
+            <form action="/login" method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            <p class="toggle-text">New here? <a id="link-to-register">Create an account</a></p>
+        </div>
+
+        <div id="register-form" style="display: none;">
+            <h2>Register</h2>
+            <form action="/register" method="POST">
+                <input type="text" name="username" placeholder="New Username" required>
+                <input type="password" name="password" placeholder="New Password" required>
+                <button type="submit" class="btn-secondary">Create Account</button>
+            </form>
+            <p class="toggle-text">Already have an account? <a id="link-to-login">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="/auth-ui.js"></script>
+</body>
+</html>

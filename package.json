@@ -1,0 +1,29 @@
+{
+  "name": "second-semester-month-3-assessment",
+  "version": "1.0.0",
+  "description": "TODO Application using MVC",
+  "main": "server.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "connect-mongo": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0",
+    "mongoose": "^9.1.5"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.11",
+    "supertest": "^7.2.2"
+  }
+}

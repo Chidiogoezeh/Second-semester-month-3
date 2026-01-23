@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Containers (Shared Logic for Auth and App) */
+#app-container, .auth-container {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    align-self: flex-start; /* Keeps container at top on mobile */
+}
+
+.auth-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Inputs */
+input[type="text"], 
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #007bff;
+}
+
+/* Filter Tabs */
+.filters {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.filter-btn.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+/* Todo List Items */
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    gap: 15px;
+}
+
+.item-text {
+    flex: 1;
+    word-break: break-word;
+    color: #333;
+    line-height: 1.4;
+}
+
+.completed-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: filter 0.2s, transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:hover {
+    filter: brightness(90%);
+}
+
+/* Primary Action Buttons (Full Width) */
+.btn-primary, #addBtn {
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+#addBtn {
+    background-color: #28a745; /* Green for adding items */
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+/* Small Action Buttons (Done/Delete) */
+.button-group {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.done-btn { background-color: #007bff; color: white; padding: 8px 14px; }
+.delete-btn { background-color: #dc3545; color: white; padding: 8px 14px; }
+
+/* Auth Toggle Text */
+.toggle-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.toggle-text a {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    #app-container, .auth-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .item-row {
+        align-items: flex-start; 
+        flex-direction: column; /* Stack buttons under text on very small screens if needed */
+    }
+    
+    .button-group {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

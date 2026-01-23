@@ -39,7 +39,9 @@ npm install
 Environment Variables: Create a .env file in the root directory:
 
 MONGO_URI=your_mongodb_connection_string
-SESSION_SECRET=your_random_secret_key
+
+SESSION_SECRET=whatever_you _like_secret_key
+
 NODE_ENV=development
 
 Start the server:

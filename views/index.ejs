@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="app-container">
+        <div style="display:flex; justify-content: space-between; align-items:center;">
+             <h3>My Tasks</h3>
+             <a href="/logout" style="font-size: 0.8rem; color: #dc3545;">Logout</a>
+        </div>
+        <div class="filters">
+            <button class="filter-btn active" data-status="pending">Pending</button>
+            <button class="filter-btn" data-status="completed">Completed</button>
+            <button class="filter-btn" data-status="deleted">Trash</button>
+        </div>
+        <div id="items"></div>
+        <div class="input-group">
+            <input id="itemInput" type="text" placeholder="Add a new task..."/>
+            <button id="addBtn">Add Item</button>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
