@@ -6,15 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const toLogin = document.getElementById('link-to-login');
 
     const toggle = () => {
-        if (loginForm.style.display === 'none') {
-            loginForm.style.display = 'block';
-            registerForm.style.display = 'none';
-        } else {
-            loginForm.style.display = 'none';
-            registerForm.style.display = 'block';
-        }
+        // We use classList.toggle to add/remove the 'hidden' class we defined in style.css
+        loginForm.classList.toggle('hidden');
+        registerForm.classList.toggle('hidden');
     };
 
+    // Add listeners if the elements exist on the page
     if (toRegister) toRegister.addEventListener('click', toggle);
     if (toLogin) toLogin.addEventListener('click', toggle);
 });

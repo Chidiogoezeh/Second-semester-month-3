@@ -2,16 +2,31 @@ let currentFilter = 'pending';
 const itemsdiv = document.getElementById("items");
 const input = document.getElementById("itemInput");
 const addBtn = document.getElementById("addBtn");
-// Select the container for the input and button to hide it dynamically
 const inputGroup = document.querySelector(".input-group");
 
-// This will only run if we are on the Todo page
+// Encapsulate everything inside this check to prevent errors on other pages
 if (itemsdiv) {
+
+    // 1. REUSABLE ADD LOGIC
+    const handleAddItem = async () => {
+        if (!input.value.trim()) return;
+        
+        await fetch('/api/todos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: input.value })
+        });
+        
+        input.value = "";
+        renderItems();
+    };
+
+    // 2. RENDER LOGIC
     const renderItems = async () => {
         const res = await fetch('/api/todos');
         const items = await res.json();
         
-        // DYNAMIC VISIBILITY: Only show "Add Item" when the filter is 'pending'
+        // Toggle visibility of the add section
         if (inputGroup) {
             inputGroup.style.display = (currentFilter === 'pending') ? 'flex' : 'none';
         }
@@ -29,7 +44,6 @@ if (itemsdiv) {
             const btnGroup = document.createElement("div");
             btnGroup.className = "button-group";
 
-            // Logic for buttons based on the current tab
             if (currentFilter === 'pending') {
                 btnGroup.appendChild(createBtn("Done", "done-btn", () => updateStatus(item._id, 'completed')));
             } else if (currentFilter === 'completed') {
@@ -44,6 +58,7 @@ if (itemsdiv) {
         });
     };
 
+    // 3. HELPER FUNCTIONS
     const createBtn = (label, cls, fn) => {
         const b = document.createElement("button");
         b.textContent = label;
@@ -67,20 +82,23 @@ if (itemsdiv) {
         renderItems();
     };
 
+    // 4. EVENT LISTENERS
+    
+    // Add button click
     if (addBtn) {
-        addBtn.addEventListener('click', async () => {
-            if (!input.value.trim()) return;
-            await fetch('/api/todos', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text: input.value })
-            });
-            input.value = "";
-            renderItems();
+        addBtn.addEventListener('click', handleAddItem);
+    }
+
+    // "Enter" key support
+    if (input) {
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleAddItem();
+            }
         });
     }
 
-    // Tab switching logic
+    // Tab switching
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
