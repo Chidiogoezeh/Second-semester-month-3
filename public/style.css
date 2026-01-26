@@ -1,4 +1,3 @@
-/* General Reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,7 +24,7 @@ body {
     align-self: flex-start;
 }
 
-/* Header & Navigation Classes (New) */
+/* Header & Navigation */
 .app-header {
     display: flex;
     justify-content: space-between;
@@ -70,7 +69,29 @@ input:focus {
     border-color: #007bff;
 }
 
-/* Error Messages (New) */
+/* --- THE INPUT GROUP --- */
+.input-group {
+    display: flex;        /* Align input and button horizontally */
+    gap: 10px;           /* Space between input and button */
+    margin-top: 20px;
+    align-items: center; /* Vertical center alignment */
+}
+
+#itemInput {
+    flex: 1;             /* Input takes up remaining width */
+    margin: 0;           /* Remove default margins for alignment */
+}
+
+#addBtn {
+    background-color: #28a745;
+    color: white;
+    width: auto;         /* Prevents full-width stretching */
+    padding: 12px 20px;  /* Smaller, specific size */
+    margin-top: 0;       /* Remove top margin to align with input */
+    white-space: nowrap; /* Keep text on one line */
+}
+
+/* Error Messages */
 .error-text {
     color: #dc3545;
     background-color: #f8d7da;
@@ -82,7 +103,7 @@ input:focus {
     border: 1px solid #f5c6cb;
 }
 
-/* Visibility Helper (New) */
+/* Visibility Helper */
 .hidden {
     display: none;
 }
@@ -153,28 +174,18 @@ button:hover {
     filter: brightness(90%);
 }
 
-/* Action Buttons */
-.btn-primary, #addBtn {
-    background-color: #007bff;
+/* Auth Action Buttons */
+.btn-primary, .btn-secondary {
     color: white;
     width: 100%;
     padding: 12px;
     margin-top: 10px;
 }
 
-#addBtn {
-    background-color: #28a745;
-}
+.btn-primary { background-color: #007bff; }
+.btn-secondary { background-color: #6c757d; }
 
-.btn-secondary {
-    background-color: #6c757d;
-    color: white;
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-}
-
-/* Button Groups (Small Actions) */
+/* Small Row Buttons */
 .button-group {
     display: flex;
     gap: 8px;
@@ -210,5 +221,12 @@ button:hover {
     .button-group {
         width: 100%;
         justify-content: flex-end;
+    }
+    /* Optional: Stack add item on very small screens */
+    .input-group {
+        flex-direction: column;
+    }
+    #addBtn {
+        width: 100%;
     }
 }
