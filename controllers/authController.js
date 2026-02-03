@@ -15,7 +15,7 @@ export const register = async (req, res) => {
         // 1. Check for existing user to provide a specific error message
         const existingUser = await User.findOne({ username });
         if (existingUser) {
-            return res.render('register', { error: 'Username is already taken' });
+            return res.render('register', { error: 'Username unavailable' });
         }
 
         // 2. Create and Save (Mongoose middleware handles hashing)
